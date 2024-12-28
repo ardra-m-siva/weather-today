@@ -1,0 +1,28 @@
+input{
+    border: 1px solid #ccc ;
+}
+.output-sect{
+    margin-top: 80px;
+    background: rgba(255, 255, 255, 0.56);
+    box-shadow: 0px 0px 5px 1px rgb(0, 128, 255);
+
+
+}
+.danger-style{
+    background-color:rgba(255, 255, 255, 0.556) ;   
+}
+
+.main-heading{
+    color: #ffea00;  
+    text-shadow: 2px 5px 5px #000000; 
+    /* filter: drop-shadow(0 0 0.3rem rgb(0, 255, 229)); */
+}
+
+.extra{
+    background-color: rgba(70, 223, 254, 0.47);
+    color: #640D5F;
+}
+
+.content-style{
+    color: #E82561;
+}
