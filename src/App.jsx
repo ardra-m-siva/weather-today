@@ -12,6 +12,7 @@ function App() {
   const [data, setData] = useState(null)
   const [backgroundImage, setBackgroundImage] = useState(defaultImg);
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef("")
 
   useEffect(() => {
@@ -19,6 +20,7 @@ function App() {
   })
 
   const weatherForecast = (loc) => {
+    setLoading(true);
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=8ac5c4d57ba6a4b3dfcf622700447b1e&units=metric`;
     fetch(url).then(res => {
       res.json().then(result => {
@@ -35,6 +37,7 @@ function App() {
     }).catch(rej => {
       setError("Failed to connect to the weather service.");
     })
+    setLoading(false);
   }
 
   const updateBackground = (weather) => {
@@ -69,7 +72,9 @@ function App() {
             )}
             {/* output section */}
             <div style={{ height: '400px' }} className='text-dark fw-bold  mt-5 d-flex align-items-center justify-content-center output-sect '>
-              {data ? (
+              { loading ? (
+                <h4 className='text-primary'>Loading weather data...</h4> // Show loading message
+              ) :data ? (
                 <div>
                   <p><i class="fa-solid fa-location-dot fs-3 content-style"></i> <span className='fs-2 fw-bold content-style'>{data?.name || "Unknown"}</span></p>
                   <p><span className='fs-1 content-style'>{data?.main?.temp}°C</span></p>
